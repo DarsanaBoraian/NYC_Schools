@@ -1,0 +1,14 @@
+import com.jetbrains.handson.kmm.shared.entity.Links
+import com.jetbrains.handson.kmm.shared.entity.Patch
+import com.jetbrains.handson.kmm.shared.entity.RocketLaunch
+
+internal class Database(databaseDriverFactory: DatabaseDriverFactory) {
+    private val database = AppDatabase(databaseDriverFactory.createDriver())
+    private val dbQuery = database.appDatabaseQueries
+}
+
+internal fun selectSchools() {
+    dbQuery.transaction {
+        dbQuery.removeAllLaunches()
+    }
+ }
